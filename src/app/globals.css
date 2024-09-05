@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Disable Tailwind styles while keeping Quill styles intact */
+.disable-tailwind * {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    line-height: inherit !important;
+    list-style-type: inherit !important;
+  }
+  
+  /* Ensure headings keep their Quill styling */
+  .disable-tailwind h1,
+  .disable-tailwind h2,
+  .disable-tailwind h3,
+  .disable-tailwind h4,
+  .disable-tailwind h5,
+  .disable-tailwind h6 {
+    all: revert !important; /* Revert to default browser or Quill styling */
+  }
+  
+  /* Ensure lists keep their Quill styling */
+  .disable-tailwind ul,
+  .disable-tailwind ol {
+    list-style-position: inside !important;
+    padding-left: 20px !important;
+    margin-left: 0 !important;
+  }
+  
+  /* Ensure bold, italic, underline keep their Quill styling */
+  .disable-tailwind strong,
+  .disable-tailwind em,
+  .disable-tailwind u {
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    text-decoration: inherit !important;
+  }
+  
+  /* Ensure links, images, videos are styled properly */
+  .disable-tailwind a,
+  .disable-tailwind img,
+  .disable-tailwind video {
+    all: revert !important;
+  }
+  
+  /* Ensure text alignment works properly */
+  .disable-tailwind div[style*="text-align"] {
+    all: revert !important;
+  }
+  
+  /* Optionally, reset other Tailwind utility classes that might interfere */
+  .disable-tailwind .mt-4,
+  .disable-tailwind .mb-4,
+  .disable-tailwind .px-3,
+  .disable-tailwind .py-2 {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  

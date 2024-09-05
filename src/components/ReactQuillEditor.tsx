@@ -67,9 +67,10 @@ const ReactQuillEditor: React.FC = () => {
       {submittedValue && (
         <div className="mt-4">
           <h2 className="text-xl font-bold mb-2">Submitted Content</h2>
-          <div className="ql-editor" dangerouslySetInnerHTML={{ __html: submittedValue }} /> {/* Added ql-editor class */}
+          <div className="ql-editor disable-tailwind" dangerouslySetInnerHTML={{ __html: submittedValue }} />{" "}
+          {/* Added ql-editor class */}
         </div>
-      )}
+      )}    
     </>
   );
 };
