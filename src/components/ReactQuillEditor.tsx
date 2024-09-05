@@ -1,27 +1,26 @@
 "use client";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import "react-quill/dist/quill.snow.css"; // Import the Quill styles
+import "react-quill/dist/quill.snow.css";
 
-// Dynamically import ReactQuill to prevent SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const modules = {
   toolbar: [
-    [{ header: [1, 2, 3, 4, 5, 6, false] }], // Explicitly define header levels
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
     [{ font: [] }],
     [{ size: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ list: "ordered" }, { list: "bullet" }], // Ensure ordered and bullet list options are defined
+    [{ list: "ordered" }, { list: "bullet" }],
     [{ indent: "-1" }, { indent: "+1" }],
     [{ align: [] }],
     ["link", "image", "video"],
-    ["clean"], // Clear formatting option
+    ["clean"],
   ],
 };
 
 const formats = [
-  "header", // Ensure 'header' format is included
+  "header",
   "font",
   "size",
   "bold",
@@ -68,9 +67,8 @@ const ReactQuillEditor: React.FC = () => {
         <div className="mt-4">
           <h2 className="text-xl font-bold mb-2">Submitted Content</h2>
           <div className="ql-editor disable-tailwind" dangerouslySetInnerHTML={{ __html: submittedValue }} />{" "}
-          {/* Added ql-editor class */}
         </div>
-      )}    
+      )}
     </>
   );
 };
