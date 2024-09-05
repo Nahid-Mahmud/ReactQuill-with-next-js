@@ -12,9 +12,11 @@ const modules = {
     [{ font: [] }],
     [{ size: [] }],
     ["bold", "italic", "underline", "strike", "blockquote"],
-    [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }, { align: [] }],
+    [{ list: "ordered" }, { list: "bullet" }], // Ensure ordered and bullet list options are defined
+    [{ indent: "-1" }, { indent: "+1" }],
+    [{ align: [] }],
     ["link", "image", "video"],
-    ["clean"],
+    ["clean"], // Clear formatting option
   ],
 };
 
@@ -27,8 +29,8 @@ const formats = [
   "underline",
   "strike",
   "blockquote",
-  "list",
-  "bullet",
+  "list", // Ensure 'list' format is included
+  "bullet", // Ensure 'bullet' format is included
   "indent",
   "link",
   "image",
@@ -36,11 +38,13 @@ const formats = [
   "align",
 ];
 
-const RichTextEditor: React.FC = () => {
+const ReactQuillEditor: React.FC = () => {
   const [value, setValue] = useState("");
+  const [submittedValue, setSubmittedValue] = useState("");
 
   const handleSubmit = () => {
     console.log(value);
+    setSubmittedValue(value);
   };
 
   return (
@@ -56,11 +60,18 @@ const RichTextEditor: React.FC = () => {
         />
       </div>
 
-      <button onClick={handleSubmit} className="bg-white mt-20 outline-lime-100 text-black">
+      <button onClick={handleSubmit} className="bg-lime-400 px-3 py-2 rounded mt-20 outline-lime-100 text-black">
         Submit
       </button>
+
+      {submittedValue && (
+        <div className="mt-4">
+          <h2 className="text-xl font-bold mb-2">Submitted Content</h2>
+          <div className="ql-editor" dangerouslySetInnerHTML={{ __html: submittedValue }} /> {/* Added ql-editor class */}
+        </div>
+      )}
     </>
   );
 };
 
-export default RichTextEditor;
+export default ReactQuillEditor;
